@@ -1,20 +1,14 @@
-# Base image
 FROM python:3.9-slim
-
-# Set the working directory inside the container
 WORKDIR /app
-
-# Copy project files into the container
 COPY . /app
-
-# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Expose Flask's default port
+ENV MYSQL_HOST=<your-database-host>
+ENV MYSQL_USER=root
+ENV MYSQL_PASSWORD=Karthick.2002
+ENV MYSQL_DB=attendance_db
+ENV MAIL_SERVER=smtp.gmail.com
+ENV MAIL_PORT=587
+ENV MAIL_USERNAME=manokarthick.ks741@gmail.com
+ENV MAIL_PASSWORD=zldx bawd gcln jqlw
 EXPOSE 5000
-
-# Set environment variable to define the Flask app
-ENV FLASK_APP=app.py
-
-# Command to run the application
-CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["python", "app.py"]
