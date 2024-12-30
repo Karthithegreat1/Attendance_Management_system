@@ -7,13 +7,8 @@ WORKDIR /app
 # Copy the current directory contents into the container
 COPY . /app
 
-# Install system dependencies for MySQL and other required packages
-RUN apt-get update && apt-get install -y \
-    libmysqlclient-dev \
-    && rm -rf /var/lib/apt/lists/*
-
 # Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Expose the default Flask port
 EXPOSE 5000
